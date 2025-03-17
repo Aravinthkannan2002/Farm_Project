@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f1de;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)),
+        url('../new-img/home/field-3092043.jpg'); /* Replace with the appropriate farm image URL */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #3c4c3c;
+}
+
+.form-container {
+    background-color: white;
+    padding: 25px; /* Reduce padding to decrease form height */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    border: 2px solid #399918;
+}
+
+h2 {
+    text-align: center;
+    color: #3c4c3c;
+    margin-bottom: 20px; /* Reduce margin for the title */
+    font-size: 24px; /* Reduce font size for the title */
+    border-bottom: 3px solid #399918;
+    padding-bottom: 10px; /* Reduce padding */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Reduce margin between form groups */
+}
+
+label {
+    display: block;
+    margin-bottom: 6px; /* Reduce margin */
+    color: #3c4c3c;
+    font-weight: 600;
+    font-size: 14px; /* Reduce font size for labels */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px; /* Reduce padding */
+    border: 2px solid #dde5b6;
+    border-radius: 8px;
+    font-size: 14px; /* Reduce font size for form fields */
+    transition: border-color 0.3s ease;
+    background-color: #fafdf6;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #81b214;
+    box-shadow: 0 0 5px rgba(129, 178, 20, 0.2);
+}
+
+input[type="date"] {
+    padding: 8px; /* Reduce padding for date input */
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+textarea {
+    height: 100px; /* Reduce height of the textarea */
+    resize: vertical;
+}
+
+button {
+    background-color: #399918;
+    color: white;
+    padding: 12px 20px; /* Reduce padding */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px; /* Reduce font size for the button */
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #6b9510;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(129, 178, 20, 0.2);
+}
+
+.required-field {
+    color: #81b214;
+    margin-left: 3px;
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px; /* Reduce padding for small screens */
+    }
+
+    h2 {
+        font-size: 20px; /* Further reduce font size for small screens */
+    }
+
+    .form-group {
+        margin-bottom: 10px; /* Further reduce margin for small screens */
+    }
+
+    input, select, textarea {
+        font-size: 10px; /* Reduce font size further for small screens */
+        padding: 8px; /* Reduce padding further for small screens */
+    }
+
+    button {
+        font-size: 14px; /* Reduce button font size for small screens */
+        padding: 10px 12px; /* Reduce button padding for small screens */
+    }
+}

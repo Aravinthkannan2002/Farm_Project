@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Event Booking Form</title>
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <script>
+        // JavaScript function to set today's date as the minimum date for the event date input
+        function setMinDate() {
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            let mm = today.getMonth() + 1; // Months are zero-based
+            let dd = today.getDate();
+
+            // Pad single digit months and days with leading zero
+            if (mm < 10) mm = '0' + mm;
+            if (dd < 10) dd = '0' + dd;
+
+            // Format the date as YYYY-MM-DD
+            const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+            // Set the min attribute for the event date input
+            document.getElementById("date").setAttribute("min", formattedDate);
+        }
+
+        // Call the function to set the min date when the page loads
+        window.onload = setMinDate;
+
+        // Example simple JavaScript validation
+        function validateForm(event) {
+            const form = event.target;
+            const phoneInput = form.querySelector("#phone");
+            const phonePattern = /^[0-9]{10}$/; // Assuming 10-digit phone number
+
+            // Check phone number format
+            if (!phonePattern.test(phoneInput.value)) {
+                alert("Please enter a valid 10-digit phone number.");
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            // Show success message and redirect to home page after form submission
+            event.preventDefault(); // Prevent the form from submitting to a server
+            showBookingSuccess();
+        }
+
+        // Function to display booking success and redirect
+        function showBookingSuccess() {
+            // Show a success message
+            const successMessage = document.createElement('div');
+            successMessage.classList.add('success-message');
+            successMessage.innerText = "Booking Successful! Redirecting to the Home Page...";
+            document.body.appendChild(successMessage);
+
+            // After 3 seconds, redirect to the home page
+            setTimeout(function() {
+                window.location.href = "index-2.html";  // Adjust the URL to your home page ("/" for the root)
+            }, 2000); // Redirect after 3 seconds
+        }
+    </script>
+    <style>
+        /* Style for success message */
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Rithish Farms Event Booking</h2>
+        <form action="#" method="POST" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="name">Full Name <span class="required-field">*</span></label>
+                <input type="text" id="name" name="name" required minlength="3">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required-field">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="required-field">*</span></label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" 
+                    title="Please enter a valid 10-digit phone number (e.g. 1234567890)">
+            </div>
+
+            <div class="form-group">
+                <label for="event-type">Event Type <span class="required-field">*</span></label>
+                <select id="event-type" name="event-type" required>
+                    <option value="">Select Event Type</option>
+                    <option value="farm-tour">Farm Tour</option>
+                    <option value="birthday">Birthday Party</option>
+                    <option value="corporate">Corporate Event</option>
+                    <option value="conference">Conference</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Event Date <span class="required-field">*</span></label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Number of Guests <span class="required-field">*</span></label>
+                <input type="number" id="guests" name="guests" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="special-requests">Special Requests or Questions</label>
+                <textarea id="special-requests" name="special-requests" 
+                    placeholder="Tell us about any special requirements, dietary restrictions, or questions about our farm venue..."></textarea>
+            </div>
+
+            <button type="submit">Submit Booking Request</button>
+        </form>
+    </div>
+</body>
+</html>
